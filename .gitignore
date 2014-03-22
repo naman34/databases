@@ -1,0 +1,15 @@
+## generic files to ignore
+08.
+*~
+09.
+*.lock
+10.
+*.DS_Store
+11.
+*.swp
+12.
+*.out
+node_modules
+node_modules/*
+client/bower_components
+client/bower_components/*
