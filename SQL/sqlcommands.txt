@@ -1,0 +1,8 @@
+
+
+
+
+
+INSERT INTO user (username) SELECT * FROM (SELECT 'bro') AS tmp WHERE NOT EXISTS ( SELECT username FROM user WHERE username="bro") LIMIT 1;
+
+INSERT INTO room (roomname) SELECT * FROM (SELECT 'spambots') AS tmp WHERE NOT EXISTS ( SELECT roomname FROM room WHERE roomname="spambots") LIMIT 1;

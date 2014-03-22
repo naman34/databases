@@ -1,0 +1,329 @@
+@-webkit-keyframes bounceInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+  }
+
+  80% {
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px);
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    transform: translateY(10px);
+  }
+
+  80% {
+    -webkit-transform: translateY(-3px);
+    -ms-transform: translateY(-3px);
+    transform: translateY(-3px);
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: rgb(64, 70, 74);
+  font-family: 'Source Sans Pro', helvetica, "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#main {
+  margin: 0 auto;
+  padding: 0.75rem;
+  padding-top: 2.5rem;
+  padding-bottom: 5rem;
+  width: 100%;
+  max-width: 1024px;
+}
+
+.message {
+  margin: 0.75rem 0;
+  position: relative;
+  font-size: 0;
+  -webkit-animation-name: bounceInDown;
+  animation-name: bounceInDown;
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.message h3 {
+  vertical-align: top;
+  display: inline-block;
+  width: 15%;
+  color: black;
+  font-size: 1rem;
+  text-align: left;
+  padding-right: 1rem;
+  background-color: rgb(65, 171, 224);
+  padding: 1rem;
+  white-space: nowrap;
+}
+
+.message p {
+  vertical-align: top;
+  padding: 1rem;
+  background-color: #ddd;
+  font-weight: 100;
+  color: #111;
+  font-size: 1rem;
+  display: inline-block;
+  width: 85%;
+}
+
+.message h3::after {
+  content: " ";
+}
+
+.message span {
+  position: absolute;
+  font-size: 0.7rem;
+  color: #A39E86;
+  top: 0.25rem;
+  right: 0.25rem;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  padding: 0 0.75rem;
+}
+
+header h1 {
+  color: #fff;
+}
+
+footer {
+  margin: 0;
+  padding: 0rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+}
+
+form {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-size: 0;
+}
+
+input[type = "text"] {
+  width: 90%;
+  display: inline-block;
+  font-size: 1.5rem;
+  padding: 1rem;
+  background: transparent;
+  border: 0;
+  outline: none;
+  font-weight: 100;
+  color: white;
+}
+
+input[type = "submit"] {
+  margin: 0;
+  padding: 2rem 0;
+  width: 10%;
+  background-color: white;
+  display: inline-block;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  font-weight: bold;
+  outline: none;
+}
+
+nav {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width:  3rem;
+  background-color: white;
+  background-image: url(http://cdn.css-tricks.com/wp-content/uploads/2012/10/threelines.png);
+  background-size: cover;
+  background-position: center center;
+}
+nav .roomlist {
+  position: absolute;
+  top: 100%;
+  width: 8rem;
+  right: 0;
+  background-color: black;
+  color: white;
+  display: none;
+  max-height: 30rem;
+  overflow: auto;
+}
+nav .roomlist a {
+  display: block;
+  padding: 0.5rem;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+}
+nav .roomlist a:hover {
+  background-color: gray;
+}
+nav:hover .roomlist {
+  display: block;
+}
+
+@media screen and (max-width: 50rem) {
+  .message h3 {
+    width: 20%;
+  }
+  .message p {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 40rem) {
+  .message h3 {
+    width: 30%;
+  }
+  .message p {
+    width: 70%;
+  }
+}
+
+/*body {
+  background: #eee;
+  text-align: center;
+  padding: 0 25px;
+  font-family: arial, sans-serif;
+}
+
+#main {
+  width: 500px;
+  margin: auto;
+  text-align: left;
+  background: white;
+  padding: 50px 60px;
+  border: solid #ddd;
+  border-width: 0 1px 1px 1px;
+}
+
+#main h1 {
+  margin-top: 0;
+  font-size: 35px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+#main h1 span {
+  font-style:italic;
+}
+
+#main ul {
+  padding-left: 20px;
+}
+
+#main .error {
+  border: 1px solid red;
+  background: #FDEFF0;
+  padding: 20px;
+}
+
+#main .success {
+  margin-top: 25px;
+}
+
+#main .success code {
+  font-size: 12px;
+  color: green;
+  line-height: 13px;
+}
+
+form {
+  padding: 20px;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+form input[type=text] {
+  margin-right: 10px;
+  width: 70%;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.chat {
+  padding: 5px;
+  margin-bottom: 5px;
+  background-color: #eee;
+}
+
+.chat .username {
+  font-weight: 800;
+}
+
+.chat:hover {
+  background-color: #ddd;
+}
+
+.spinner {
+  float: right;
+  height: 46px;
+  margin-bottom: 5px;
+}
+
+.spinner img {
+  padding: 10px;
+}
+*/

@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>chatterbox</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,200italic,400italic,600italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- dependencies -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <!-- your scripts -->
+    <script src="scripts/config.js"></script>
+    <script src="scripts/app.js"></script>
+    <!-- <script src="scripts/rooms.js"></script>
+    <script src="scripts/templates.js"></script>
+    <script src="scripts/view.js"></script>
+    <script src="scripts/messageFetcher.js"></script>-->
+  </head>
+  <body>
+
+    <div id="main">
+
+      <header>
+        <h1>chatterbox</h1>
+        <nav>
+          <div class="roomlist" id="roomSelect">
+          </div>
+        </nav>
+      </header>
+
+      <div class="messages" id="chats">
+      </div>
+
+      <footer>
+        <form>
+          <input type="text" placeholder="your chatter here…">
+          <input type="submit" value="post" id="submit">
+        </form>
+      </footer>
+
+    </div>
+    <script type="x/template" id="message-template">
+      <div class="message" id="{{objectId}}" data-username="{{username}}">
+        <h3 class="username">{{username}}&nbsp;</h3>
+        <p class="text">{{text}}&nbsp;</p>
+        <span class="timestamp">{{updatedAt}}</span>
+      </div>
+    </script>
+    <script>
+//3
+      (function(){
+        app.init();
+      })();
+
+    </script>
+  </body>
+</html>
