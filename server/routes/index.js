@@ -1,5 +1,5 @@
 // var mongojs = require('mongojs');
-var myMySql = require('./../../SQL/persistent_server');
+var myMySql = require('./../../SQL/persistent_server_gen');
 
 // var db = mongojs(process.env.mongourl || 'chatterbox', ['chats']);
 
@@ -34,6 +34,7 @@ exports.get = function(req, res){
     if(!!err){
       return res.send(500, "An error occured. Sorry!");
     }
+    console.log("rows: ", rows);
     rows = rows.map(function(row){
       row.objectId = row.id;
       return row;
