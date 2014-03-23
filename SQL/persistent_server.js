@@ -1,5 +1,4 @@
 var mysql = require('mysql');
-var async = require('async');
 var Promise = require('bluebird');
 /* If the node mysql module is not found on your system, you may
  * need to do an "sudo npm install -g mysql". */
@@ -44,35 +43,36 @@ exports.addMessageToDb = function(message, cb){
   .catch(function(err){
     connection.rollbackAsync()
     .then(function(){
+      console.log(err);
       cb(err);
     });
-  })
-  .finally(function(){
-    return connection.endAsync();
-  })
-  .catch(function(err){
-    console.log(err);
-    connection.destroy();
   });
+  // .finally(function(){
+  //   return connection.endAsync();
+  // })
+  // .catch(function(err){
+  //   console.log(err);
+  //   connection.destroy();
+  // });
 
 };
 
 
-var getMessages = function(orderby, updatedAfter, cb){
+exports.getMessages = function(orderby, updatedAfter, cb){
 
   // connection.query("SELECT * FROM message", function(err, rows){
   //   cb(err, rows);
   // });
 
-  var timestring = (typeof updatedAfter === 'string') ? updatedAfter: JSON.stringify(updatedAfter);
+  var timestring = JSON.stringify(new Date(new Date(updatedAfter).valueOf() - 25200000));
   var orderPartOfString = " ORDER BY updatedAt DESC";
 
   if(Object.keys(orderby).length === 1){
     orderPartOfString = " ORDER BY " + Object.keys(orderby)[0];
     orderPartOfString += (orderby[Object.keys(orderby)[0]] === -1) ? " DESC" : " ASC";
   }
-  //AND message.id_room = room.id AND updatedAt > CONVERT_TZ( ?, '+00:00', '-07:00')
-  connection.queryAsync("SELECT message.text, message.updatedAt, message.id, user.username, room.roomname FROM message, user, room WHERE message.id_user = user.id" + orderPartOfString, [timestring])
+  console.log(timestring);
+  connection.queryAsync('SELECT message.text, message.updatedAt, message.id, user.username, room.roomname FROM message, user, room WHERE message.id_user = user.id AND message.id_room = room.id AND message.updatedAt > ' + timestring + orderPartOfString)
     .then(function(rows){
       if(rows.length > 0){
         cb(null, rows[0]);
@@ -81,19 +81,15 @@ var getMessages = function(orderby, updatedAfter, cb){
         cb(null, []);
       }
     })
-    .catch(cb)
-    .finally(function(){
-      return connection.endAsync();
-    })
-    .catch(function(){
-      connection.destroy();
-    });
+    .catch(cb);
+    // .finally(function(){
+    //   return connection.endAsync();
+    // })
+    // .catch(function(){
+    //   connection.destroy();
+    // });
 
 };
-
-getMessages({username: 1}, new Date("March 22, 2014 11:20:00 AM"),function(err, rows){
-  console.log(err, rows);
-});
 // var a = function(a,b){
 
 //   var defferred = Promise.defferred;

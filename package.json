@@ -9,8 +9,9 @@
     "underscore": "~1.6.0",
     "mongojs": "~0.10.1",
     "async": "~0.2.10",
-    "mysql": "~2.1.1",
-    "bluebird": "~1.1.1"
+    "bluebird": "~1.1.1",
+    "sequelize": "~1.7.0",
+    "mysql": "~2.0.1"
   },
   "scripts": {
     "start": "node server/basic-server.js"

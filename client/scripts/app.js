@@ -2,7 +2,7 @@ var app = window.app = {};
 
 app.init = function(){
 
-  app.server = "http://chattery.azurewebsites.net/classes/chatterbox";
+  app.server = "http://127.0.0.1:3000/classes/chatterbox";
   app.wordRegEx = /^[a-zA-Z0-9\_]+$/;
   app.roomsRegEx = /^#\/room\/[\w]+\/?/;
   app.timeInterval = 1000;
@@ -54,7 +54,7 @@ app.setUpEventHandlers = function(){
 app.handleMessages = function(response) {
 
   // Adds each of the messages and calls fetch again in a second.
-  _.each(response.results.reverse(), app.addMessage);
+  _.each(response.results, app.addMessage);
   setTimeout(app.fetch, app.timeInterval);
 
 };
